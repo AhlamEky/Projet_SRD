@@ -61,6 +61,7 @@ Préparation des Données
 Téléchargement du Dataset:
 
 Le dataset est téléchargé et placé dans le dossier data/raw/.
+le lien du dataset sur internet est le suivant : https://www.kaggle.com/datasets/mmohaiminulislam/vehicles-image-dataset
 
 Prétraitement des Données
 
