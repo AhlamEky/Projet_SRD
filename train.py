@@ -6,26 +6,25 @@ from tqdm import tqdm
 import argparse
 from cnn_model import VehicleCNN
 from metrics import TrainingMetrics
+from torchvision import datasets, transforms
+
 import os
 
-def create_dummy_data(num_classes, batch_size):
-    """Create dummy data for testing when real data isn't available"""
-    # Generate 1000 random images (3 channels, 224x224)
-    images = torch.randn(1000, 3, 224, 224)
-    # Generate random labels
-    labels = torch.randint(0, num_classes, (1000,))
+def load_real_data(data_dir, batch_size):
+    """Load real vehicle classification data from the processed folder"""
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+    ])
     
-    # Create dataset and split into train/val
-    dataset = TensorDataset(images, labels)
-    train_size = int(0.8 * len(dataset))
-    val_size = len(dataset) - train_size
-    train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, val_size])
-    
-    # Create data loaders
+    train_dataset = datasets.ImageFolder(root=os.path.join(data_dir, 'train'), transform=transform)
+    val_dataset = datasets.ImageFolder(root=os.path.join(data_dir, 'test'), transform=transform)
+
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     
     return train_loader, val_loader
+
 
 def train_one_epoch(model, dataloader, criterion, optimizer, device, epoch, metrics):
     model.train()
@@ -72,7 +71,8 @@ def main(args):
     model = VehicleCNN(num_classes=args.num_classes).to(device)
     
     # Create dummy data (replace with real data later)
-    train_loader, val_loader = create_dummy_data(args.num_classes, args.batch_size)
+    # train_loader, val_loader = create_dummy_data(args.num_classes, args.batch_size)
+    train_loader, val_loader = load_real_data('data/processed', args.batch_size)
     
     # Optimizer and loss
     optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
