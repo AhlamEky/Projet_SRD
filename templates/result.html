@@ -1,0 +1,115 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Prediction Result</h1>
+        </header>
+
+        <main>
+            <div class="image-preview">
+                <img src="{{ url_for('static', filename='uploads/' + image_name) }}" alt="Uploaded Image">
+            </div>
+
+            <div class="result-details">
+                <h2>Predicted Class:</h2>
+                <p class="prediction">{{ predicted_class }}</p>
+
+                <h2>Confidence:</h2>
+                <p class="confidence">{{ confidence }}%</p>
+            </div>
+
+            <a href="/" class="back-button">🔙 Back to Home</a>
+        </main>
+
+
+        <main class="result-container">
+        <div class="image-preview">
+            <img src="{{ url_for('static', filename='uploads/' + image_name) }}" alt="Uploaded Image">
+        </div>
+
+        <div class="result-details">
+            <h2>Predicted Class:</h2>
+            <p class="prediction">{{ predicted_class }}</p>
+
+            <h2>Confidence:</h2>
+            <p class="confidence">{{ confidence }}%</p>
+        </div>
+        </main>
+
+        <div class="back-home">
+            <a href="/" class="back-button">🔙 Back to Home</a>
+        </div>
+
+
+        <footer>
+            <p>© 2025 AHIH | Image Classifier</p>
+        </footer>
+    </div>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Prediction Result</h1>
+        </header>
+
+        <!--<main class="result-container">
+        <div class="image-preview">
+            <img src="{{ url_for('static', filename='uploads/' + image_name) }}" alt="Uploaded Image">
+        </div>
+
+        <div class="result-details">
+            <h2>Predicted Class:</h2>
+            <p class="prediction">{{ predicted_class }}</p>
+
+            <h2>Confidence:</h2>
+            <p class="confidence">{{ confidence }}%</p>
+        </div>
+        </main>-->
+
+        <main class="result-layout">
+        <div class="image-preview">
+            <img src="{{ url_for('static', filename='uploads/' + image_name) }}" alt="Uploaded Image">
+        </div>
+
+        <div class="result-details">
+            <h2>Predicted Class:</h2>
+            <p class="prediction">{{ predicted_class }}</p>
+
+            <h2>Confidence:</h2>
+            <p class="confidence">{{ confidence }}%</p>
+        </div>
+        </main>
+
+        <div class="back-home">
+            <a href="/" class="back-button">🔙 Back to Home</a>
+        </div>
+
+        <footer>
+            <p>© 2025 AHIF | Image Classifier</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
+
+

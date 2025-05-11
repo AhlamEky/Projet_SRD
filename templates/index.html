@@ -1,0 +1,73 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧠 Smart Image Classifier</h1>
+      <p>Upload an image and let us do the rest!</p>
+    </header>
+
+    <main>
+      <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">🚀 Classify</button>
+      </form>
+
+      {% if prediction %}
+      <div class="result">
+        <h2>🔍 Prediction:</h2>
+        <p><strong>{{ prediction }}</strong></p>
+      </div>
+      {% endif %}
+    </main>
+
+    <footer>
+      <p>© 2025 AHIF | Powered by Flask & PyTorch</p>
+    </footer>
+  </div>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧠 Smart Image Classifier</h1>
+      <p>Upload an image and let us do the rest!</p>
+    </header>
+
+    <main>
+      <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">🚀 Classify</button>
+      </form>
+
+      {% if prediction %}
+      <div class="result">
+        <h2>🔍 Prediction:</h2>
+        <p><strong>{{ prediction }}</strong></p>
+      </div>
+      {% endif %}
+    </main>
+
+    <footer>
+      <p>© 2025 AHIF | Powered by Flask & PyTorch</p>
+    </footer>
+  </div>
+</body>
+</html>
+

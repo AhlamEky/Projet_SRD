@@ -1,0 +1,237 @@
+
+/* Global styles */
+body {
+     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}*/
+
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.upload-section {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-top: 30px;
+    text-align: center;
+}
+
+form input[type="file"] {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form button, .back-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+form button:hover, .back-button:hover {
+    background-color: #388e3c;
+}
+
+.result-section, .result-details {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/*.prediction {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.confidence {
+    font-size: 20px;
+    color: #555;
+}*/
+
+.prediction, .confidence {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.image-preview img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.back-home {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.result-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: nowrap;
+    margin-top: 30px;
+}
+
+.result-details {
+    text-align: left;
+    max-width: 300px;
+}
+
+.result-details {
+    text-align: left;
+    max-width: 300px;
+    padding-left: 20px;
+    border-left: 2px solid #ccc;
+}
+
+
+
+
+/* Global styles */
+/*body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
+.container, main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.upload-section {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-top: 30px;
+    text-align: center;
+}
+
+form input[type="file"] {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form button, .back-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+form button:hover, .back-button:hover {
+    background-color: #388e3c;
+}
+
+.result-section, .result-details {
+    margin-top: 25px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.prediction {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.confidence {
+    font-size: 20px;
+    color: #555;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 14px;
+}*/
