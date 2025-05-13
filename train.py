@@ -6,22 +6,34 @@ from tqdm import tqdm
 import argparse
 from cnn_model import VehicleCNN
 from metrics import TrainingMetrics
+from torchvision import datasets, transforms
 import os
 
 def create_dummy_data(num_classes, batch_size):
     """Create dummy data for testing when real data isn't available"""
-    # Generate 1000 random images (3 channels, 224x224)
     images = torch.randn(1000, 3, 224, 224)
-    # Generate random labels
     labels = torch.randint(0, num_classes, (1000,))
     
-    # Create dataset and split into train/val
     dataset = TensorDataset(images, labels)
     train_size = int(0.8 * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, val_size])
     
-    # Create data loaders
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    
+    return train_loader, val_loader
+
+def load_real_data(data_dir, batch_size):
+    """Load real vehicle classification data from the processed folder"""
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+    ])
+    
+    train_dataset = datasets.ImageFolder(root=os.path.join(data_dir, 'train'), transform=transform)
+    val_dataset = datasets.ImageFolder(root=os.path.join(data_dir, 'test'), transform=transform)
+
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     
@@ -35,16 +47,13 @@ def train_one_epoch(model, dataloader, criterion, optimizer, device, epoch, metr
     for inputs, targets in progress_bar:
         inputs, targets = inputs.to(device), targets.to(device)
         
-        # Forward pass
         outputs = model(inputs)
         loss = criterion(outputs, targets)
         
-        # Backward pass
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
         
-        # Update metrics
         metrics.update(loss, outputs, targets)
         progress_bar.set_postfix({'Loss': f"{loss.item():.4f}"})
     
@@ -64,26 +73,22 @@ def validate(model, dataloader, criterion, device, metrics):
     return metrics.compute()
 
 def main(args):
-    # Configuration device
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     torch.backends.cudnn.benchmark = True
     
-    # Create model
     model = VehicleCNN(num_classes=args.num_classes).to(device)
     
-    # Create dummy data (replace with real data later)
-    train_loader, val_loader = create_dummy_data(args.num_classes, args.batch_size)
+    # 📌 Utilise l’une des deux lignes ci-dessous selon le besoin
+    # train_loader, val_loader = create_dummy_data(args.num_classes, args.batch_size)
+    train_loader, val_loader = load_real_data('data/processed', args.batch_size)
     
-    # Optimizer and loss
     optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
     criterion = nn.CrossEntropyLoss()
     
-    # Metrics
     train_metrics = TrainingMetrics(args.num_classes)
     val_metrics = TrainingMetrics(args.num_classes)
     
-    # Training loop
     for epoch in range(args.epochs):
         train_stats = train_one_epoch(model, train_loader, criterion, optimizer, device, epoch, train_metrics)
         val_stats = validate(model, val_loader, criterion, device, val_metrics)
@@ -94,7 +99,6 @@ def main(args):
         
         scheduler.step()
         
-        # Save model checkpoint
         if epoch % args.save_interval == 0:
             os.makedirs('checkpoints', exist_ok=True)
             torch.save({
