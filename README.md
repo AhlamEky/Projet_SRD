@@ -1,6 +1,6 @@
-***Projet de Classification d'Images***
+#***Projet de Classification d'Images*** (niveau 1)
 
-- Description du Projet:
+##- Description du Projet: (niveau 2)
 
 Ce projet consiste à construire un modèle de classification d'images de véhicules.
 Nous utilisons un réseau de neurones convolutifs (CNN) pour prédire le type de véhicule
@@ -38,7 +38,7 @@ Boat
 Kayak
 
 
-***Préparation des Données***
+##***Préparation des Données*** (niveau 2)
 
 - Téléchargement du Dataset:
 Le dataset est téléchargé et placé dans le dossier data/raw/.
@@ -62,7 +62,7 @@ Le script dataset_loader.py crée des DataLoaders pour charger les images
 dans le modèle pendant l'entraînement.
 Les données sont séparées en trois ensembles : train, val, et test.
 
-***Entraînement Distribué sur Cluster GPU***
+##***Entraînement Distribué sur Cluster GPU*** (niveau 2)
 
 Pour accélérer l’entraînement et gérer la volumétrie importante des données, nous avons implémenté un entraînement distribué sur un cluster GPU. Cette approche permet de paralléliser le calcul sur plusieurs GPU afin de réduire considérablement le temps d’entraînement.
 
@@ -80,7 +80,7 @@ python distributed_train.py --rank 1 --world_size 4
 python distributed_train.py --rank 2 --world_size 4
 python distributed_train.py --rank 3 --world_size 4**
 
-***Interface Web***
+##***Interface Web*** (niveau 2)
 
 Pour faciliter l’utilisation du modèle par des utilisateurs non techniques, une interface web a été développée.
 
